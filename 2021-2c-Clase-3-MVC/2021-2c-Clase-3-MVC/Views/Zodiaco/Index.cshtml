@@ -8,7 +8,13 @@
 <ul>
     @foreach (var signo in Model)
     {
-        <li><a href="@signo.Url">@signo.Nombre</a></li>
+        <li style="margin-bottom: 3px;">
+            <a style="margin-right:5px;" href="@signo.Url">@signo.Nombre</a>
+
+            <a class="btn btn-sm btn-danger ml-3" href="/Zodiaco/Eliminar/@signo.Id">Eliminar</a>
+
+        </li>
+
     }
 </ul>
 

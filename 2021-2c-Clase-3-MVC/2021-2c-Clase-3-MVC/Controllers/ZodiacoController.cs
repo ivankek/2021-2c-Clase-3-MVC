@@ -72,11 +72,11 @@ namespace _2021_2c_Clase_3_MVC.Controllers
         [HttpPost]
         public IActionResult NuevoBindingManualPost()
         {
-            Signo signo = new Signo() 
+            Signo signo = new Signo()
             {
-                Nombre = Request.Form["Nombre"], 
-                FechaFin = DateTime.Parse(Request.Form["FechaFin"]), 
-                FechaInicio = DateTime.Parse(Request.Form["FechaInicio"]), 
+                Nombre = Request.Form["Nombre"],
+                FechaFin = DateTime.Parse(Request.Form["FechaFin"]),
+                FechaInicio = DateTime.Parse(Request.Form["FechaInicio"]),
                 Url = Request.Form["Url"]
             };
             try
@@ -91,5 +91,20 @@ namespace _2021_2c_Clase_3_MVC.Controllers
 
             return Redirect("Index");
         }
+
+        [Route("Zodiaco/CualEsMiSigno/{dia=1}/{mes=1}")]
+        public IActionResult CualEsMiSigno(int dia, int mes)
+        {
+            return View(SignosServicio.cualEsMiSigno(dia, mes));
+        }
+
+        [Route("Zodiaco/Eliminar/{Id}")]
+        public IActionResult Eliminar(int Id)
+        {
+
+            SignosServicio.Eliminar(Id);
+            return Redirect("/Zodiaco");
+        }
+
     }
 }
